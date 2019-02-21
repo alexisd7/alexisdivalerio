@@ -19,9 +19,9 @@ export default class Detail extends React.Component {
                <Image source={item.image} style={{width:200,height:200}} onPress={() => navigate('Detail')}/>
              </TouchableOpacity>}
            />
-           <Text>Image 1: Hiding Cat</Text>
-           <Text>Image 2: Relaxing Cat</Text>
-           <Text>Image 3: Hazel</Text>
+           <Text>Cat 1: Hiding Cat</Text>
+           <Text>Cat 2: Relaxing Cat</Text>
+           <Text>Cat 3: Hazel</Text>
         </View>
         }
       </ScrollView>
