@@ -11,6 +11,7 @@ import * as Expo from "expo";
 import Forecast from "./Forecast";
 import LocationButton from "./LocationButton";
 import textStyles from "./styles/typography.js";
+//import Nav from "./Nav.js";
 
 const STORAGE_KEY = "@SmarterWeather:zip";
 
@@ -27,7 +28,6 @@ class WeatherProject extends Component {
     super(props);
     this.state = { forecast: null };
   }
-
     
   checkMultiPermissions = async() => {
     const { Permissions, FileSystem } = Expo;
@@ -140,7 +140,7 @@ class WeatherProject extends Component {
         <View style={styles.overlay}>
           <View style={styles.row}>
             <Text style={textStyles.mainText}>
-              Forecast for
+              Enter zipcode:
             </Text>
 
             <View style={styles.zipContainer}>
@@ -152,16 +152,45 @@ class WeatherProject extends Component {
             </View>
           </View>
 
-          <View style={styles.row}>
+          {/* <View style={styles.row}>
             <LocationButton onGetCoords={this._getForecastForCoords} />
-          </View>
+          </View> */}
+          {content}
           <View style={styles.row}>
             <Button onPress={this.checkMultiPermissions} label="Choose Image"></Button>
           </View>
-          {content}
-
         </View>
       </PhotoBackdrop>
+    );
+  }
+}
+
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      time: new Date().toLocaleString()
+    };
+  }
+  componentDidMount() {
+    this.intervalID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
+  }
+  tick() {
+    this.setState({
+      time: new Date().toLocaleString()
+    });
+  }
+  render() {
+    return (
+      <Text className="App-clock">
+        The time is {this.state.time}.
+      </Text>
     );
   }
 }

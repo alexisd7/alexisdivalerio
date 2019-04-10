@@ -47,7 +47,7 @@ class NameForm extends React.Component {
             </label>
             <input type="submit" value="Submit" />
             <br/>
-            Please enter a valid name.
+            <p id="errormessage">Please enter a valid name.</p>
             </form>
           );
         }

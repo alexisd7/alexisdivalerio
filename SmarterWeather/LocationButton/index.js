@@ -6,7 +6,7 @@ import styles from "./style.js";
 const style = { backgroundColor: "#DDDDDD" };
 
 class LocationButton extends Component {
-  _onPress() {
+  _componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       initialPosition => {
         this.props.onGetCoords(
@@ -26,7 +26,7 @@ class LocationButton extends Component {
       <Button
         label="Use Current Location"
         style={style}
-        onPress={this._onPress.bind(this)}
+        componentDidMount={this._componentDidMount.bind(this)}
       />
     );
   }
